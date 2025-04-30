@@ -3,18 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic</title>
+    <title>Catch the Creatures!</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>Basic HTML Structure</h1>
-    <p>This is a simple HTML document with a title and a paragraph.</p>
-    <p>Here is a list of items:</p>
-    <ul>
-        <li>Item 1</li>
-        <li>Item 2</li>
-        <li>Item 3</li>
-    </ul>
-    <p>And here is a link to <a href="https://www.example.com">Example</a>.</p>
-    
+    <div class="scoreboard">
+        Score: <span id="score">0</span> | Time Left: <span id="timer">60</span>s
+    </div>
+
+    <div class="diver" id="diver">🧑‍🚀</div>
+
+    <div class="end-screen" id="endScreen">
+        <div id="finalScore">You caught 0 creatures!</div>
+        <button onclick="restartGame()">Play Again</button>
+    </div>
+
+    <script src="index.js"></script>
 </body>
 </html>
