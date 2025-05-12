@@ -17,6 +17,7 @@ const creatureEmojis = [
     '🐙', // Squid
     '🐢', // Turtle
     '🐋', // Whale
+    '🦈'  // Shark (new)
 ];
 
 document.addEventListener('mousemove', (e) => {
@@ -42,11 +43,21 @@ function spawnCreature() {
     creature.className = 'ocean-creature';
     creature.style.top = `${Math.random() * 80 + 10}%`;
     creature.style.left = `${Math.random() * 90}%`;
-    creature.textContent = creatureEmojis[Math.floor(Math.random() * creatureEmojis.length)];
+
+    // Randomly select a creature
+    const isShark = Math.random() < 0.2; // 20% chance to spawn a shark
+    creature.textContent = isShark ? '🦈' : creatureEmojis[Math.floor(Math.random() * (creatureEmojis.length - 1))];
+
+    // Add click behavior
     creature.addEventListener('click', () => {
-        score++;
+        if (isShark) {
+            score = Math.max(0, score - 1); // Prevent negative scores
+            clickSound.play(); // Play the same sound
+        } else {
+            score++;
+            clickSound.play();
+        }
         scoreEl.textContent = score;
-        clickSound.play(); // Play the sound
         creature.remove();
     });
 
