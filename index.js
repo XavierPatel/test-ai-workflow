@@ -4,6 +4,8 @@ const timerEl = document.getElementById('timer');
 const endScreen = document.getElementById('endScreen');
 const finalScoreEl = document.getElementById('finalScore');
 const clickSound = new Audio('fishSound.mp3'); // Path to your sound file
+const mainMenu = document.getElementById('mainMenu'); // Main menu container
+const startButton = document.getElementById('startButton'); // Start button
 
 let score = 0;
 let timeLeft = 60;
@@ -65,12 +67,16 @@ function spawnCreature() {
     setTimeout(() => creature.remove(), 8000);
 }
 
+// Start game function
 function startGame() {
     score = 0;
     timeLeft = 60;
     scoreEl.textContent = score;
     timerEl.textContent = timeLeft;
     endScreen.style.display = 'none';
+    mainMenu.style.display = 'none'; // Hide the main menu
+    scoreEl.style.display = 'visible'; // Show the score
+    timerEl.style.display = 'visible'; // Show the timer
 
     gameInterval = setInterval(spawnCreature, 800);
     timerInterval = setInterval(() => {
@@ -94,5 +100,5 @@ function restartGame() {
     startGame();
 }
 
-// Start on load
-startGame();
+// Attach event listener to the start button
+startButton.addEventListener('click', startGame);
