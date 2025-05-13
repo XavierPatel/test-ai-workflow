@@ -5,12 +5,13 @@
 }
 
 html, body {
-    height: 100%;
+    background: url('Ocean_Background.png') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 0;
     overflow: hidden;
-    background: linear-gradient(to bottom, #001d3d, #003566);
-    cursor: none;
-    font-family: 'Segoe UI', sans-serif;
 }
+
 
 .scoreboard {
     position: absolute;
